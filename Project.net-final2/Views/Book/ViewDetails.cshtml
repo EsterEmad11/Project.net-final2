@@ -1,0 +1,33 @@
+﻿@model Book
+@{
+    Layout = "_Layout_New1";
+
+}
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card" style="width: 35rem;">
+        <div class="card-header text-center">
+            <h3>@Model.title</h3>
+        </div>
+
+        <div class="card-body">
+            @if (Model.ImagePath != null)
+            {
+                <img src="@Model.ImagePath" alt="Book Image" class="card-img-top mb-3" style="max-height: 300px; object-fit: cover;" />
+            }
+
+            <h5 class="card-title">Price: @Model.Price.ToString("C")</h5>
+            <p class="card-text">
+                <strong>Quantity:</strong> @Model.Quantity <br />
+                <strong>Description:</strong> @Model.Description <br />
+                <strong>Category:</strong> @Model.Category.Name
+            </p>
+        </div>
+
+        <div class="card-footer text-center">
+            <a href="@Url.Action("Edit", new { id = Model.BookId })" class="btn btn-primary">Edit</a>
+            <a href="@Url.Action("Delete", new { id = Model.BookId })" class="btn btn-danger">Delete</a>
+            <a href="~/Book/Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Category
+@{
+    Layout = "_Layout_New1";
+
+}
+
+
+<div class="alert alert-primary " role="alert">
+    <h4>Category Info</h4>
+    
+</div>
+<div class="row ">
+    <div class="col-2 ">
+        <h5>Name:</h5>
+    </div>
+    <div class="col-10 "><h5>@Model.Name</h5></div>
+</div>
+
+<hr />
+
+<div class="row ">
+    <div class="col-2 ">
+        <h5>With ID:</h5>
+    </div>
+    <div class="col-10 "><h5>@Model.Id</h5></div>
+</div>
+
+
+<hr />
+
+<div class="row ">
+    <div class="col-2">
+        <h5>Description:</h5>
+    </div>
+    <div class="col-10"><h5>@Model.Description</h5></div>
+</div>
+
+<hr />
+
+<a href="~/Category/Index" class="btn btn-secondary">Cancel</a>
+
+

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Category>
+@{
+    Layout = "_Layout_New1";
+
+}
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card-body"><h4 class="text-white m-0">Our Categories !</h4></div>
+</div>
+<a href="~/Category/Create" class="btn btn-secondary">Add Category</a>
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 text-cente">
+                    <div class="card-header text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text">
+                            <strong>Name Of Category:</strong> @item.Name <br />
+                            <strong>ID:</strong> @item.Id <br />
+                            <strong>Description:</strong> @item.Description
+                        </p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-controller="Category" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary mx-2">View</a>
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary mx-2">Edit</a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

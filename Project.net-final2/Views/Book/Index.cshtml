@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Book>
+@{
+    Layout = "_Layout_New1";
+    
+}
+
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card-body"><h4 class="text-white m-0">All Books !</h4></div>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 text-center">
+                    <div class="card-header">
+                        <h5 class="card-title">@item.title</h5>
+                    </div>
+                    <div class="card-body">
+                        @if (item.ImagePath != null)
+                        {
+                            <img src="@item.ImagePath" alt="Book Image" class="img-fluid" style="max-height: 200px; object-fit: cover;" />
+                        }
+                        <p class="card-text">
+                            <strong>Description:</strong> @item.Description <br />
+                            <strong>Price:</strong> @item.Price.ToString("C") <br />
+                            <strong>Quantity:</strong> @item.Quantity <br />
+                            <strong>Category:</strong> @item.Category?.Name
+                        </p>
+
+                       
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a asp-controller="Book" asp-action="ViewDetails" asp-route-id="@item.BookId" class="btn btn-primary mx-1">View</a>
+                        <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-secondary mx-1">Edit</a>
+                        <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger mx-1">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

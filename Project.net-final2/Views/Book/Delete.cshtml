@@ -1,0 +1,67 @@
+﻿@model Book
+@{
+    Layout = "_Layout_New1";
+
+}
+
+
+<div class="alert alert-danger" role="alert">
+    <h4>Delete Book</h4>
+    <h6>Are you sure you want to delete this Book?</h6>
+</div>
+<div>
+    <h4>@Model.title</h4>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-2">
+        <h5>Quantity</h5>
+    </div>
+    <div class="col-10">@Model.Quantity</div>
+</div>
+
+<div class="row">
+    <div class="col-2">
+        <h5>Price</h5>
+    </div>
+    <div class="col-10">@Model.Price</div>
+</div>
+
+<div class="row">
+    <div class="col-2">
+        <h5>Description</h5>
+    </div>
+    <div class="col-10">@Model.Description</div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-2">
+        <h5>Cover Photo</h5>
+    </div>
+    <div class="col-10">
+        @if (Model.ImagePath != null)
+        {
+            <img src="@Model.ImagePath" alt="Book Image" width="150" />
+        }
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-2">
+        <h5>Category</h5>
+    </div>
+    <div class="col-10">@Model.Category!.Name</div>
+</div>
+
+<hr />
+
+<form action="~/Book/Delete/@Model.BookId" method="post">
+    <input type="hidden" name="confirm" value="yes" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a href="~/Book/Index" class="btn btn-secondary">Cancel</a>
+</form>
